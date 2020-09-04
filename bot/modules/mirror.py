@@ -138,13 +138,13 @@ class MirrorListener(listeners.MirrorListeners):
 
     def onUploadComplete(self, link: str):
         with download_dict_lock:
-            msg = f'<b>Filename : </b><code>{download_dict[self.uid].name()}</code>\n<b>Size : </b><code>{download_dict[self.uid].size()}</code>'
+            msg = f'<b>Filename : </b><code>{download_dict[self.uid].name()}</code>\n<b>Size : </b><code>{download_dict[self.uid].size()}</code>\n<b>⁍ Join Our Team Drive To Access The G-Drive Link.</b>\n<b>#Uploads @OtakuDriveGroup</b>'
             buttons = button_build.ButtonMaker()
             if SHORTENER is not None and SHORTENER_API is not None:
                 surl = requests.get('https://{}/api?api={}&url={}&format=text'.format(SHORTENER, SHORTENER_API, link)).text
-                buttons.buildbutton("⚡Drive Link⚡", surl)
+                buttons.buildbutton("☁️Drive Link☁️", surl)
             else:
-                buttons.buildbutton("⚡Drive Link⚡", link)
+                buttons.buildbutton("☁️Drive Link☁️", link)
             LOGGER.info(f'Done Uploading {download_dict[self.uid].name()}')
             if INDEX_URL is not None:
                 share_url = requests.utils.requote_uri(f'{INDEX_URL}/{download_dict[self.uid].name()}')
